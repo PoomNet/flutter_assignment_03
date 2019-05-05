@@ -35,6 +35,7 @@ class _AddTodoItemScreenState extends State<AddTodoItemScreen> {
                         child: RaisedButton(
                             child: Text("Save"),
                             onPressed: () {
+                              if(_formKey.currentState.validate()){
                               Firestore.instance.runTransaction(
                                   (Transaction transaction) async {
                                 CollectionReference reference =
@@ -47,6 +48,7 @@ class _AddTodoItemScreenState extends State<AddTodoItemScreen> {
                                 _todoNameController.clear();
                               });
                               Navigator.pop(context);
+                              }
                             }))
                   ],
                 )
